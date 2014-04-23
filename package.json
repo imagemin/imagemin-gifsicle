@@ -22,11 +22,10 @@
     "compress",
     "gif",
     "image",
-    "imagemin",
+    "imageminplugin",
     "img",
     "minify",
-    "optimize",
-    "plugin"
+    "optimize"
   ],
   "dependencies": {
     "image-type": "^0.1.1",

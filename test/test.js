@@ -8,7 +8,7 @@ var Imagemin = require('image-min');
 var path = require('path');
 
 describe('gifsicle()', function () {
-    it('should optimize a JPG', function (cb) {
+    it('should optimize a GIF', function (cb) {
         var imagemin = new Imagemin();
 
         imagemin
