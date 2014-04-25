@@ -22,6 +22,15 @@ var imagemin = new Imagemin()
 imagemin.optimize();
 ```
 
+## Options
+
+### interlaced
+
+Type: `Boolean`  
+Default: `false`
+
+Interlace gif for progressive rendering.
+
 ## License
 
 [MIT License](http://en.wikipedia.org/wiki/MIT_License) © [Kevin Mårtensson](https://github.com/kevva)
