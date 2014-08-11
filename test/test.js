@@ -4,7 +4,7 @@
 var assert = require('assert');
 var fs = require('fs');
 var gifsicle = require('../');
-var Imagemin = require('image-min');
+var Imagemin = require('imagemin');
 var path = require('path');
 
 describe('gifsicle()', function () {
