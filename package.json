@@ -30,10 +30,10 @@
   "dependencies": {
     "exec-buffer": "^0.1.0",
     "gifsicle": "^0.1.0",
-    "image-type": "^0.1.1"
+    "is-gif": "^1.0.0"
   },
   "devDependencies": {
-    "imagemin": "^0.4.7",
+    "imagemin": "^1.0.0",
     "mocha": "^1.18.2"
   }
 }

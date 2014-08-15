@@ -2,7 +2,7 @@
 
 var ExecBuffer = require('exec-buffer');
 var gifsicle = require('gifsicle').path;
-var imageType = require('image-type');
+var isGif = require('is-gif');
 
 /**
  * gifsicle image-min plugin
@@ -15,7 +15,7 @@ module.exports = function (opts) {
     opts = opts || {};
 
     return function (file, imagemin, cb) {
-        if (imageType(file.contents) !== 'gif') {
+        if (!isGif(file.contents)) {
             return cb();
         }
 
