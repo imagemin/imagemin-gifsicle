@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "gifsicle image-min plugin",
   "license": "MIT",
-  "repository": "kevva/imagemin-gifsicle",
+  "repository": "imagemin/imagemin-gifsicle",
   "author": {
     "name": "Kevin Mårtensson",
     "email": "kevinmartensson@gmail.com",
