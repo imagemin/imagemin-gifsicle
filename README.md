@@ -1,6 +1,5 @@
 # imagemin-gifsicle [![Build Status](http://img.shields.io/travis/imagemin/imagemin-gifsicle.svg?style=flat)](https://travis-ci.org/imagemin/imagemin-gifsicle) [![Build status](https://ci.appveyor.com/api/projects/status/51vfu1ntxwx7t949)](https://ci.appveyor.com/project/ShinnosukeWatanabe/imagemin-gifsicle)
 
-
 > gifsicle image-min plugin
 
 
@@ -14,7 +13,7 @@ $ npm install --save imagemin-gifsicle
 ## Usage
 
 ```js
-var Imagemin = require('image-min');
+var Imagemin = require('imagemin');
 var gifsicle = require('imagemin-gifsicle');
 
 var imagemin = new Imagemin()
