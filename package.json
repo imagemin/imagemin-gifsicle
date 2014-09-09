@@ -1,7 +1,7 @@
 {
   "name": "imagemin-gifsicle",
   "version": "1.0.0",
-  "description": "gifsicle image-min plugin",
+  "description": "gifsicle imagemin plugin",
   "license": "MIT",
   "repository": "imagemin/imagemin-gifsicle",
   "author": {
@@ -29,10 +29,12 @@
   ],
   "dependencies": {
     "gifsicle": "^1.0.0",
-    "is-gif": "^1.0.0"
+    "is-gif": "^1.0.0",
+    "through2": "^0.6.1"
   },
   "devDependencies": {
     "ava": "0.0.4",
-    "imagemin": "^1.0.0"
+    "imagemin": "^1.0.0",
+    "vinyl": "^0.4.3"
   }
 }
