@@ -21,6 +21,8 @@
   "keywords": [
     "compress",
     "gif",
+    "gifsicle",
+    "gulpplugin",
     "image",
     "imageminplugin",
     "img",
