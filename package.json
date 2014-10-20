@@ -30,12 +30,12 @@
     "optimize"
   ],
   "dependencies": {
-    "gifsicle": "^1.0.0",
+    "gifsicle": "^2.0.0",
     "is-gif": "^1.0.0",
     "through2": "^0.6.1"
   },
   "devDependencies": {
-    "ava": "0.0.4",
+    "ava": "^0.0.4",
     "vinyl": "^0.4.3"
   }
 }
