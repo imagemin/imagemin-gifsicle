@@ -10,7 +10,7 @@ test('optimize a GIF', function (t) {
 	t.plan(3);
 
 	read(path.join(__dirname, 'fixtures/test.gif'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = gifsicle();
 		var size = file.contents.length;
@@ -30,7 +30,7 @@ test('optimize a GIF using ctor', function (t) {
 	var Gifsicle = gifsicle.ctor();
 
 	read(path.join(__dirname, 'fixtures/test.gif'), function (err, file) {
-		t.assert(!err);
+		t.assert(!err, err);
 
 		var stream = new Gifsicle();
 		var size = file.contents.length;
