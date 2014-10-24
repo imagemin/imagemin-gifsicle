@@ -38,7 +38,7 @@ var gifsicle = require('imagemin-gifsicle');
 
 gulp.task('default', function () {
 	return gulp.src('images/*.gif')
-		.pipe(gifsicle({ interlaced: true }))
+		.pipe(gifsicle({ interlaced: true })())
 		.pipe(gulp.dest('build/images'));
 });
 ```
