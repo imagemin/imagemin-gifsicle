@@ -1,8 +1,8 @@
 'use strict';
 
+var spawn = require('child_process').spawn;
 var gifsicle = require('gifsicle').path;
 var isGif = require('is-gif');
-var spawn = require('child_process').spawn;
 var through = require('through2');
 
 module.exports = function (opts) {
@@ -34,11 +34,6 @@ module.exports = function (opts) {
 
 		var cp = spawn(gifsicle, args);
 
-		cp.on('error', function (err) {
-			cb(err);
-			return;
-		});
-
 		cp.stderr.setEncoding('utf8');
 		cp.stderr.on('data', function (data) {
 			cb(new Error(data));
@@ -50,6 +45,7 @@ module.exports = function (opts) {
 			len += data.length;
 		});
 
+		cp.on('error', cb);
 		cp.on('close', function () {
 			if (len < file.contents.length) {
 				file.contents = Buffer.concat(ret, len);

@@ -5,7 +5,7 @@
 
 ## Install
 
-```sh
+```
 $ npm install --save imagemin-gifsicle
 ```
 
@@ -14,41 +14,36 @@ $ npm install --save imagemin-gifsicle
 
 ```js
 var Imagemin = require('imagemin');
-var gifsicle = require('imagemin-gifsicle');
+var imageminGifsicle = require('imagemin-gifsicle');
 
-var imagemin = new Imagemin()
+new Imagemin()
 	.src('images/*.gif')
 	.dest('build/images')
-	.use(gifsicle({interlaced: true}));
-
-imagemin.run(function (err, files) {
-	if (err) {
-		throw err;
-	}
-
-	console.log('Files optimized successfully!'); 
-});
+	.use(imageminGifsicle({interlaced: true}))
+	.run();
 ```
 
 You can also use this plugin with [gulp](http://gulpjs.com):
 
 ```js
 var gulp = require('gulp');
-var gifsicle = require('imagemin-gifsicle');
+var imageminGifsicle = require('imagemin-gifsicle');
 
 gulp.task('default', function () {
 	return gulp.src('images/*.gif')
-		.pipe(gifsicle({interlaced: true})())
+		.pipe(imageminGifsicle({interlaced: true})())
 		.pipe(gulp.dest('build/images'));
 });
 ```
 
 
-## Options
+## API
 
-### interlaced
+### imageminGifsicle(options)
 
-Type: `Boolean`  
+### options.interlaced
+
+Type: `boolean`  
 Default: `false`
 
 Interlace gif for progressive rendering.
