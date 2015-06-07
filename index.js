@@ -1,7 +1,7 @@
 'use strict';
 
 var spawn = require('child_process').spawn;
-var gifsicle = require('gifsicle').path;
+var gifsicle = require('gifsicle');
 var isGif = require('is-gif');
 var through = require('through2');
 
