@@ -1,18 +1,14 @@
-'use strict';
-var fs = require('fs');
-var path = require('path');
-var isGif = require('is-gif');
-var pify = require('pify');
-var test = require('ava');
-var imageminGifsicle = require('../');
+import fs from 'fs';
+import path from 'path';
+import isGif from 'is-gif';
+import pify from 'pify';
+import test from 'ava';
+import m from '../';
 
-test('optimize a GIF', function (t) {
-	t.plan(2);
+test(async t => {
+	const buf = await pify(fs.readFile)(path.join(__dirname, 'fixtures/test.gif'));
+	const data = await m()(buf);
 
-	pify(fs.readFile)(path.join(__dirname, 'fixtures/test.gif')).then(function (buf) {
-		imageminGifsicle()(buf).then(function (data) {
-			t.assert(data.length < buf.length, data.length);
-			t.assert(isGif(data));
-		});
-	});
+	t.true(data.length < buf.length);
+	t.true(isGif(data));
 });
