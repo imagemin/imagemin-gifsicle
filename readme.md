@@ -24,7 +24,7 @@ imagemin('images/*.gif', 'build/images', {use: [imageminGifsicle()]}).then(() =>
 
 ## API
 
-### imageminGifsicle(options)(buffer)
+### imageminGifsicle([options])(buffer)
 
 Returns a promise for a buffer.
 
@@ -32,7 +32,7 @@ Returns a promise for a buffer.
 
 ##### interlaced
 
-Type: `boolean`
+Type: `boolean`<br>
 Default: `false`
 
 Interlace gif for progressive rendering.
