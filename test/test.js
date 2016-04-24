@@ -1,25 +1,18 @@
 'use strict';
-
+var fs = require('fs');
 var path = require('path');
 var isGif = require('is-gif');
-var read = require('vinyl-file').read;
+var pify = require('pify');
 var test = require('ava');
 var imageminGifsicle = require('../');
 
 test('optimize a GIF', function (t) {
-	t.plan(3);
+	t.plan(2);
 
-	read(path.join(__dirname, 'fixtures/test.gif'), function (err, file) {
-		t.assert(!err, err);
-
-		var stream = imageminGifsicle()();
-		var size = file.contents.length;
-
-		stream.on('data', function (data) {
-			t.assert(data.contents.length < size, data.contents.length);
-			t.assert(isGif(data.contents));
+	pify(fs.readFile)(path.join(__dirname, 'fixtures/test.gif')).then(function (buf) {
+		imageminGifsicle()(buf).then(function (data) {
+			t.assert(data.length < buf.length, data.length);
+			t.assert(isGif(data));
 		});
-
-		stream.end(file);
 	});
 });
