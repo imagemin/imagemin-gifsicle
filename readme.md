@@ -16,7 +16,7 @@ $ npm install --save imagemin-gifsicle
 const imagemin = require('imagemin');
 const imageminGifsicle = require('imagemin-gifsicle');
 
-imagemin('images/*.gif', 'build/images', {use: [imageminGifsicle()]}).then(() => {
+imagemin(['images/*.gif'], 'build/images', {use: [imageminGifsicle()]}).then(() => {
 	console.log('Images optimized');
 });
 ```
