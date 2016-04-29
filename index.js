@@ -24,6 +24,10 @@ module.exports = opts => buf => {
 		args.push('--interlace');
 	}
 
+	if (opts.optimizationLevel) {
+		args.push('--optimize', opts.optimizationLevel);
+	}
+
 	return execBuffer({
 		input: buf,
 		bin: gifsicle,
