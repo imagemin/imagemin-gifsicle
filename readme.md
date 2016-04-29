@@ -13,40 +13,48 @@ $ npm install --save imagemin-gifsicle
 ## Usage
 
 ```js
-var Imagemin = require('imagemin');
-var imageminGifsicle = require('imagemin-gifsicle');
+const imagemin = require('imagemin');
+const imageminGifsicle = require('imagemin-gifsicle');
 
-new Imagemin()
-	.src('images/*.gif')
-	.dest('build/images')
-	.use(imageminGifsicle({interlaced: true}))
-	.run();
-```
-
-You can also use this plugin with [gulp](http://gulpjs.com):
-
-```js
-var gulp = require('gulp');
-var imageminGifsicle = require('imagemin-gifsicle');
-
-gulp.task('default', function () {
-	return gulp.src('images/*.gif')
-		.pipe(imageminGifsicle({interlaced: true})())
-		.pipe(gulp.dest('build/images'));
+imagemin(['images/*.gif'], 'build/images', {use: [imageminGifsicle()]}).then(() => {
+	console.log('Images optimized');
 });
 ```
 
 
 ## API
 
-### imageminGifsicle(options)
+### imageminGifsicle([options])(buffer)
 
-### options.interlaced
+Returns a promise for a buffer.
 
-Type: `boolean`  
+#### options
+
+##### interlaced
+
+Type: `boolean`<br>
 Default: `false`
 
 Interlace gif for progressive rendering.
+
+##### optimizationLevel
+
+Type: `number`<br>
+Default: `1`
+
+Select an optimization level between `1` and `3`.
+
+> The optimization level determines how much optimization is done; higher levels take longer, but may have better results.
+
+1. Stores only the changed portion of each image.
+2. Also uses transparency to shrink the file further.
+3. Try several optimization methods (usually slower, sometimes better results)
+
+#### buffer
+
+Type: `buffer`
+
+Buffer to optimize.
 
 
 ## License

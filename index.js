@@ -1,66 +1,39 @@
 'use strict';
+const execBuffer = require('exec-buffer');
+const gifsicle = require('gifsicle');
+const isGif = require('is-gif');
 
-var spawn = require('child_process').spawn;
-var gifsicle = require('gifsicle');
-var isGif = require('is-gif');
-var through = require('through2');
+module.exports = opts => buf => {
+	opts = Object.assign({}, opts);
 
-module.exports = function (opts) {
-	opts = opts || {};
+	if (!Buffer.isBuffer(buf)) {
+		return Promise.reject(new TypeError('Expected a buffer'));
+	}
 
-	return through.ctor({objectMode: true}, function (file, enc, cb) {
-		if (file.isNull()) {
-			cb(null, file);
-			return;
-		}
+	if (!isGif(buf)) {
+		return Promise.resolve(buf);
+	}
 
-		if (file.isStream()) {
-			cb(new Error('Streaming is not supported'));
-			return;
-		}
+	const args = [
+		'--no-warnings',
+		'--output', execBuffer.output,
+		execBuffer.input
+	];
 
-		if (!isGif(file.contents)) {
-			cb(null, file);
-			return;
-		}
+	if (opts.interlaced) {
+		args.push('--interlace');
+	}
 
-		var args = ['-w'];
-		var ret = [];
-		var len = 0;
+	if (opts.optimizationLevel) {
+		args.push('--optimize', opts.optimizationLevel);
+	}
 
-		if (opts.interlaced) {
-			args.push('--interlace');
-		}
-
-		var cp = spawn(gifsicle, args);
-
-		cp.stderr.setEncoding('utf8');
-		cp.stderr.on('data', function (data) {
-			var err = new Error(data);
-			err.fileName = file.path;
-			cb(err);
-			return;
-		});
-
-		cp.stdout.on('data', function (data) {
-			ret.push(data);
-			len += data.length;
-		});
-
-		cp.on('error', function (err) {
-			err.fileName = file.path;
-			cb(err);
-			return;
-		});
-
-		cp.on('close', function () {
-			if (len < file.contents.length) {
-				file.contents = Buffer.concat(ret, len);
-			}
-
-			cb(null, file);
-		});
-
-		cp.stdin.end(file.contents);
+	return execBuffer({
+		input: buf,
+		bin: gifsicle,
+		args
+	}).catch(err => {
+		err.message = err.stderr || err.message;
+		throw err;
 	});
 };
