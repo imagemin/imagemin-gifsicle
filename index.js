@@ -14,19 +14,17 @@ module.exports = opts => buf => {
 		return Promise.resolve(buf);
 	}
 
-	const args = [
-		'--no-warnings',
-		'--output', execBuffer.output,
-		execBuffer.input
-	];
+	const args = ['--no-warnings'];
 
 	if (opts.interlaced) {
 		args.push('--interlace');
 	}
 
 	if (opts.optimizationLevel) {
-		args.push('--optimize', opts.optimizationLevel);
+		args.push(`--optimize=${opts.optimizationLevel}`);
 	}
+
+	args.push('--output', execBuffer.output, execBuffer.input);
 
 	return execBuffer({
 		input: buf,
