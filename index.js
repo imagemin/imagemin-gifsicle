@@ -24,6 +24,10 @@ module.exports = opts => buf => {
 		args.push(`--optimize=${opts.optimizationLevel}`);
 	}
 
+	if (opts.colors) {
+		args.push(`--colors=${opts.colors}`);
+	}
+
 	args.push('--output', execBuffer.output, execBuffer.input);
 
 	return execBuffer({
