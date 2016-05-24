@@ -50,6 +50,12 @@ Select an optimization level between `1` and `3`.
 2. Also uses transparency to shrink the file further.
 3. Try several optimization methods (usually slower, sometimes better results)
 
+##### colors
+
+Type: `number`
+
+Reduce the number of distinct colors in each output GIF to num or less. Num must be between 2 and 256.
+
 #### buffer
 
 Type: `buffer`
