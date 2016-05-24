@@ -53,7 +53,6 @@ Select an optimization level between `1` and `3`.
 ##### colors
 
 Type: `number`<br>
-Default: `undefined`
 
 Reduce the number of distinct colors in each output GIF to num or less. Num must be between 2 and 256.
 
