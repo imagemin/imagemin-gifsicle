@@ -14,7 +14,7 @@ module.exports = opts => buf => {
 		return Promise.resolve(buf);
 	}
 
-	const args = ['--no-warnings'];
+	const args = ['--no-warnings', '--no-app-extensions'];
 
 	if (opts.interlaced) {
 		args.push('--interlace');
