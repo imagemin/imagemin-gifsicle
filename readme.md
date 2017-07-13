@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save imagemin-gifsicle
+$ npm install imagemin-gifsicle
 ```
 
 
@@ -29,6 +29,8 @@ imagemin(['images/*.gif'], 'build/images', {use: [imageminGifsicle()]}).then(() 
 Returns a promise for a buffer.
 
 #### options
+
+Type: `Object`
 
 ##### interlaced
 
@@ -58,7 +60,7 @@ Reduce the number of distinct colors in each output GIF to num or less. Num must
 
 #### buffer
 
-Type: `buffer`
+Type: `Buffer`
 
 Buffer to optimize.
 
