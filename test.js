@@ -12,8 +12,8 @@ test('Buffer', async t => {
 	t.true(isGif(data));
 });
 
-test('String', async t => {
+test('Buffer - non-binary', async t => {
 	const buf = Buffer.from('string');
 	const data = await m()(buf);
-	t.true(data.toString() === 'string');
+	t.is(data.toString(), 'string');
 });
