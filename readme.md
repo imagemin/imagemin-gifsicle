@@ -1,6 +1,6 @@
 # imagemin-gifsicle [![Build Status](http://img.shields.io/travis/imagemin/imagemin-gifsicle.svg?style=flat)](https://travis-ci.org/imagemin/imagemin-gifsicle) [![Build status](https://ci.appveyor.com/api/projects/status/51vfu1ntxwx7t949?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/imagemin-gifsicle)
 
-> gifsicle imagemin plugin
+> Imagemin plugin for [Gifsicle](https://www.lcdf.org/gifsicle/)
 
 
 ## Install
@@ -16,9 +16,15 @@ $ npm install imagemin-gifsicle
 const imagemin = require('imagemin');
 const imageminGifsicle = require('imagemin-gifsicle');
 
-imagemin(['images/*.gif'], 'build/images', {use: [imageminGifsicle()]}).then(() => {
+(async () => {
+	await imagemin(['images/*.gif'], 'build/images', {
+		use: [
+			imageminGifsicle()
+		]
+	});
+
 	console.log('Images optimized');
-});
+})();
 ```
 
 
