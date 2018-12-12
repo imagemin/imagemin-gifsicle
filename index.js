@@ -27,6 +27,18 @@ module.exports = opts => buf => {
 	if (opts.colors) {
 		args.push(`--colors=${opts.colors}`);
 	}
+	
+	if (opts.resize) {
+        args.push(`--resize=${opts.resize}`)
+    }
+
+    if (opts.resizeWidth) {
+        args.push(`--resize-width=${opts.resizeWidth}`)
+    }
+
+    if (opts.resizeHeight) {
+        args.push(`--resize-height=${opts.resizeHeight}`)
+    }
 
 	args.push('--output', execBuffer.output, execBuffer.input);
 

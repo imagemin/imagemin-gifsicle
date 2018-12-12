@@ -70,6 +70,17 @@ Type: `Buffer`
 
 Buffer to optimize.
 
+##### resize
+
+Type: `string`
+
+Resize the output GIF to the given width and height (`widthxheight`)
+
+##### resizeHeight / resizeWidth
+
+Type: `number`
+
+Resize to a given width or height, preserving aspect ratio.
 
 ## License
 
