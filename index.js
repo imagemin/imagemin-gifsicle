@@ -3,37 +3,35 @@ const execBuffer = require('exec-buffer');
 const gifsicle = require('gifsicle');
 const isGif = require('is-gif');
 
-module.exports = opts => buf => {
-	opts = Object.assign({}, opts);
-
-	if (!Buffer.isBuffer(buf)) {
-		return Promise.reject(new TypeError('Expected a buffer'));
+module.exports = (options = {}) => input => {
+	if (!Buffer.isBuffer(input)) {
+		return Promise.reject(new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``));
 	}
 
-	if (!isGif(buf)) {
-		return Promise.resolve(buf);
+	if (!isGif(input)) {
+		return Promise.resolve(input);
 	}
 
 	const args = ['--no-warnings', '--no-app-extensions'];
 
-	if (opts.interlaced) {
+	if (options.interlaced) {
 		args.push('--interlace');
 	}
 
-	if (opts.optimizationLevel) {
-		args.push(`--optimize=${opts.optimizationLevel}`);
+	if (options.optimizationLevel) {
+		args.push(`--optimize=${options.optimizationLevel}`);
 	}
 
-	if (opts.colors) {
-		args.push(`--colors=${opts.colors}`);
+	if (options.colors) {
+		args.push(`--colors=${options.colors}`);
 	}
 
 	args.push('--output', execBuffer.output, execBuffer.input);
 
 	return execBuffer({
-		input: buf,
+		args,
 		bin: gifsicle,
-		args
+		input
 	}).catch(error => {
 		error.message = error.stderr || error.message;
 		throw error;

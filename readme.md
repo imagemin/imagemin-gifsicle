@@ -1,4 +1,4 @@
-# imagemin-gifsicle [![Build Status](http://img.shields.io/travis/imagemin/imagemin-gifsicle.svg?style=flat)](https://travis-ci.org/imagemin/imagemin-gifsicle)
+# imagemin-gifsicle [![Build Status](https://travis-ci.org/imagemin/imagemin-gifsicle.svg?branch=master)](https://travis-ci.org/imagemin/imagemin-gifsicle)
 
 > Imagemin plugin for [Gifsicle](https://www.lcdf.org/gifsicle/)
 
@@ -30,13 +30,13 @@ const imageminGifsicle = require('imagemin-gifsicle');
 
 ## API
 
-### imageminGifsicle([options])(buffer)
+### imageminGifsicle(options?)(buffer)
 
-Returns a promise for a buffer.
+Returns a `Promise<Buffer>` with the optimized image.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### interlaced
 
@@ -69,8 +69,3 @@ Reduce the number of distinct colors in each output GIF to num or less. Num must
 Type: `Buffer`
 
 Buffer to optimize.
-
-
-## License
-
-MIT © [imagemin](https://github.com/imagemin)
