@@ -34,6 +34,22 @@ const imageminGifsicle = require('imagemin-gifsicle');
 
 Returns a `Promise<Buffer>` with the optimized image.
 
+#### buffer
+
+Type: `Buffer`
+
+Buffer to optimize.
+
+### imageminGifsicle.stream(options?)(stream)
+
+Returns a [`stream.Readable`](https://nodejs.org/api/stream.html#stream_readable_streams).
+
+#### stream
+
+Type: `stream.Readable`
+
+Input stream to optimize.
+
 #### options
 
 Type: `object`
@@ -63,9 +79,3 @@ Select an optimization level between `1` and `3`.
 Type: `number`
 
 Reduce the number of distinct colors in each output GIF to num or less. Num must be between 2 and 256.
-
-#### buffer
-
-Type: `Buffer`
-
-Buffer to optimize.

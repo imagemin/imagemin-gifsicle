@@ -27,10 +27,12 @@
 	"dependencies": {
 		"execa": "^1.0.0",
 		"gifsicle": "^4.0.0",
-		"is-gif": "^3.0.0"
+		"is-gif": "^3.0.0",
+		"is-stream": "^2.0.0"
 	},
 	"devDependencies": {
 		"ava": "^0.25.0",
+		"get-stream": "^4.1.0",
 		"pify": "^4.0.0",
 		"xo": "^0.23.0"
 	}
