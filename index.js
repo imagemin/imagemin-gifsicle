@@ -26,6 +26,23 @@ module.exports = (options = {}) => input => {
 		args.push(`--colors=${options.colors}`);
 	}
 
+	if (options.resize) {
+		const width = options.resize.width && Number.isInteger(options.resize.width) ? options.resize.width : '_';
+		const height = options.resize.height && Number.isInteger(options.resize.height) ? options.resize.height : '_';
+
+		if (!(width === '_' && height === '_')) {
+			args.push(`--resize=${width}x${height}`);
+		}
+
+		if (options.resize.method) {
+			if (['sample', 'mix'].indexOf(options.resize.method) > -1) {
+				args.push(`--resize-method=${options.resize.method}`);
+			} else {
+				return Promise.reject(new Error('Resize method only takes \'sample\' or \'mix\' as value.'));
+			}
+		}
+	}
+
 	return execa(gifsicle, args, {
 		encoding: null,
 		input

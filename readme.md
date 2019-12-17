@@ -38,6 +38,27 @@ Returns a `Promise<Buffer>` with the optimized image.
 
 Type: `object`
 
+##### resize
+
+Type: `object`
+
+Resize the output GIF to the given width and height. If width or height is not specified, that dimension is chosen so that the aspect ratio remains unchanged. Resizing happens after all input frames have been combined and before optimization.
+
+###### width
+
+Type: `number`
+
+###### height
+
+Type: `number`
+
+###### method
+
+Type: `string` <br>
+Default: `mix`
+
+Valid values are `mix` or `sample`.
+
 ##### interlaced
 
 Type: `boolean`<br>
