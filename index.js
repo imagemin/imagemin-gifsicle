@@ -3,13 +3,13 @@ const execa = require('execa');
 const gifsicle = require('gifsicle');
 const isGif = require('is-gif');
 
-module.exports = (options = {}) => input => {
+module.exports = (options = {}) => async input => {
 	if (!Buffer.isBuffer(input)) {
-		return Promise.reject(new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``));
+		throw new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``);
 	}
 
 	if (!isGif(input)) {
-		return Promise.resolve(input);
+		return input;
 	}
 
 	const args = ['--no-warnings', '--no-app-extensions'];
@@ -26,9 +26,10 @@ module.exports = (options = {}) => input => {
 		args.push(`--colors=${options.colors}`);
 	}
 
-	return execa(gifsicle, args, {
+	const {stdout} = await execa(gifsicle, args, {
 		encoding: null,
 		input
-	})
-		.then(({stdout}) => stdout);
+	});
+
+	return stdout;
 };
