@@ -6,7 +6,7 @@
 	"repository": "imagemin/imagemin-gifsicle",
 	"funding": "https://github.com/imagemin/imagemin-gifsicle?sponsor=1",
 	"engines": {
-		"node": ">=6"
+		"node": ">=10"
 	},
 	"scripts": {
 		"test": "xo && ava"

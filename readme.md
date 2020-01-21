@@ -2,13 +2,11 @@
 
 > Imagemin plugin for [Gifsicle](https://www.lcdf.org/gifsicle/)
 
-
 ## Install
 
 ```
 $ npm install imagemin-gifsicle
 ```
-
 
 ## Usage
 
@@ -27,7 +25,6 @@ const imageminGifsicle = require('imagemin-gifsicle');
 })();
 ```
 
-
 ## API
 
 ### imageminGifsicle(options?)(buffer)
@@ -40,14 +37,14 @@ Type: `object`
 
 ##### interlaced
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `false`
 
 Interlace gif for progressive rendering.
 
 ##### optimizationLevel
 
-Type: `number`<br>
+Type: `number`\
 Default: `1`
 
 Select an optimization level between `1` and `3`.
