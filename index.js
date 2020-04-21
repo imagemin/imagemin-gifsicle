@@ -27,27 +27,27 @@ module.exports = (options = {}) => async input => {
 	}
 
 	if (options.lossy) {
-		args.push(`--lossy=${options.lossy}`)
+		args.push(`--lossy=${options.lossy}`);
 	}
 
 	if (options.colorMethod) {
-		args.push(`--color-method=${options.colorMethod}`)
+		args.push(`--color-method=${options.colorMethod}`);
 	}
 
 	if (options.ditherMethod) {
-		args.push(`--dither=${options.ditherMethod}`)
+		args.push(`--dither=${options.ditherMethod}`);
 	}
 
 	if (options.resize) {
-		args.push(`--resize=${options.resize}`)
+		args.push(`--resize=${options.resize}`);
 	}
 
 	if (options.resizeMethod) {
-		args.push(`--resize-method=${options.resizeMethod}`)
+		args.push(`--resize-method=${options.resizeMethod}`);
 	}
 
 	if (options.resizeColors) {
-		args.push(`--resize-colors=${options.resizeColors}`)
+		args.push(`--resize-colors=${options.resizeColors}`);
 	}
 
 	const {stdout} = await execa(gifsicle, args, {
