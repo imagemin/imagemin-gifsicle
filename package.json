@@ -26,13 +26,12 @@
 		"optimize"
 	],
 	"dependencies": {
-		"execa": "^1.0.0",
+		"execa": "^4.0.0",
 		"gifsicle": "^5.0.0",
 		"is-gif": "^3.0.0"
 	},
 	"devDependencies": {
-		"ava": "^0.25.0",
-		"pify": "^4.0.0",
-		"xo": "^0.25.3"
+		"ava": "^3.8.0",
+		"xo": "^0.30.0"
 	}
 }

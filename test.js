@@ -1,12 +1,14 @@
-import fs from 'fs';
-import path from 'path';
-import isGif from 'is-gif';
-import pify from 'pify';
-import test from 'ava';
-import imageminGifsicle from '.';
+const {promisify} = require('util');
+const fs = require('fs');
+const path = require('path');
+const isGif = require('is-gif');
+const test = require('ava');
+const imageminGifsicle = require('.');
+
+const readFile = promisify(fs.readFile);
 
 test('Buffer', async t => {
-	const buf = await pify(fs.readFile)(path.join(__dirname, 'fixture.gif'));
+	const buf = await readFile(path.join(__dirname, 'fixture.gif'));
 	const data = await imageminGifsicle()(buf);
 
 	t.true(data.length < buf.length);
