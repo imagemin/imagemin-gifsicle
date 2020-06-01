@@ -15,8 +15,9 @@ const imagemin = require('imagemin');
 const imageminGifsicle = require('imagemin-gifsicle');
 
 (async () => {
-	await imagemin(['images/*.gif'], 'build/images', {
-		use: [
+	await imagemin(['images/*.gif'], {
+		destination: 'build/images',
+		plugins: [
 			imageminGifsicle()
 		]
 	});
