@@ -28,6 +28,7 @@ module.exports = (options = {}) => async input => {
 
 	const {stdout} = await execa(gifsicle, args, {
 		encoding: null,
+		maxBuffer: Infinity,
 		input
 	});
 
