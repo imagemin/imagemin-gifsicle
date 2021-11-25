@@ -4,9 +4,10 @@
 	"description": "Imagemin plugin for Gifsicle",
 	"license": "MIT",
 	"repository": "imagemin/imagemin-gifsicle",
+	"type": "module",
 	"funding": "https://github.com/imagemin/imagemin-gifsicle?sponsor=1",
 	"engines": {
-		"node": ">=10"
+		"node": "^12.20.0 || ^14.13.1 || >=16.0.0"
 	},
 	"scripts": {
 		"test": "xo && ava"
@@ -26,12 +27,12 @@
 		"optimize"
 	],
 	"dependencies": {
-		"execa": "^4.0.0",
-		"gifsicle": "^5.0.0",
-		"is-gif": "^3.0.0"
+		"execa": "^6.0.0",
+		"gifsicle": "^6.1.0",
+		"is-gif": "^4.0.1"
 	},
 	"devDependencies": {
-		"ava": "^3.8.0",
-		"xo": "^0.30.0"
+		"ava": "^3.15.0",
+		"xo": "^0.46.4"
 	}
 }

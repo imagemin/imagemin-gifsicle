@@ -1,4 +1,4 @@
-# imagemin-gifsicle
+# imagemin-gifsicle ![GitHub Actions Status](https://github.com/imagemin/imagemin-gifsicle/workflows/test/badge.svg?branch=master)
 
 > Imagemin plugin for [Gifsicle](https://www.lcdf.org/gifsicle/)
 
@@ -11,8 +11,8 @@ $ npm install imagemin-gifsicle
 ## Usage
 
 ```js
-const imagemin = require('imagemin');
-const imageminGifsicle = require('imagemin-gifsicle');
+import imagemin from 'imagemin';
+import imageminGifsicle from 'imagemin-gifsicle';
 
 (async () => {
 	await imagemin(['images/*.gif'], {
