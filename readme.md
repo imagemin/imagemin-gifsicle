@@ -1,4 +1,4 @@
-# imagemin-gifsicle ![GitHub Actions Status](https://github.com/imagemin/imagemin-gifsicle/workflows/test/badge.svg?branch=master)
+# imagemin-gifsicle ![GitHub Actions Status](https://github.com/imagemin/imagemin-gifsicle/workflows/test/badge.svg?branch=main)
 
 > Imagemin plugin for [Gifsicle](https://www.lcdf.org/gifsicle/)
 
