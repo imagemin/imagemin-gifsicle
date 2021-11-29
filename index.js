@@ -1,9 +1,9 @@
-'use strict';
-const execa = require('execa');
-const gifsicle = require('gifsicle');
-const isGif = require('is-gif');
+import {Buffer} from 'node:buffer';
+import {execa} from 'execa';
+import gifsicle from 'gifsicle';
+import isGif from 'is-gif';
 
-module.exports = (options = {}) => async input => {
+const main = (options = {}) => async input => {
 	if (!Buffer.isBuffer(input)) {
 		throw new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``);
 	}
@@ -28,9 +28,11 @@ module.exports = (options = {}) => async input => {
 
 	const {stdout} = await execa(gifsicle, args, {
 		encoding: null,
-		maxBuffer: Infinity,
-		input
+		maxBuffer: Number.POSITIVE_INFINITY,
+		input,
 	});
 
 	return stdout;
 };
+
+export default main;
