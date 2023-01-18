@@ -5,16 +5,16 @@ import test from 'ava';
 import imageminGifsicle from './index.js';
 
 test('Buffer', async t => {
-	const buf = await fs.readFile(new URL('fixture.gif', import.meta.url));
-	const data = await imageminGifsicle()(buf);
+	const buffer = await fs.readFile(new URL('fixture.gif', import.meta.url));
+	const data = await imageminGifsicle()(buffer);
 
-	t.true(data.length < buf.length);
+	t.true(data.length < buffer.length);
 	t.true(isGif(data));
 });
 
 test('Buffer - non-binary', async t => {
-	const buf = Buffer.from('string');
-	const data = await imageminGifsicle()(buf);
+	const buffer = Buffer.from('string');
+	const data = await imageminGifsicle()(buffer);
 
 	t.is(data.toString(), 'string');
 });

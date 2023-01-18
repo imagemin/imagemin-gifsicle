@@ -1,15 +1,15 @@
 import {Buffer} from 'node:buffer';
 import {execa} from 'execa';
-import gifsicle from 'gifsicle';
 import isGif from 'is-gif';
+import gifsicle from 'gifsicle';
 
-const main = (options = {}) => async input => {
-	if (!Buffer.isBuffer(input)) {
-		throw new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``);
+const imageminGifsicle = (options = {}) => async buffer => {
+	if (!Buffer.isBuffer(buffer)) {
+		throw new TypeError(`Expected \`buffer\` to be of type \`Buffer\` but received type \`${typeof buffer}\``);
 	}
 
-	if (!isGif(input)) {
-		return input;
+	if (!isGif(buffer)) {
+		return buffer;
 	}
 
 	const args = ['--no-warnings', '--no-app-extensions'];
@@ -28,11 +28,11 @@ const main = (options = {}) => async input => {
 
 	const {stdout} = await execa(gifsicle, args, {
 		encoding: null,
+		input: buffer,
 		maxBuffer: Number.POSITIVE_INFINITY,
-		input,
 	});
 
 	return stdout;
 };
 
-export default main;
+export default imageminGifsicle;
