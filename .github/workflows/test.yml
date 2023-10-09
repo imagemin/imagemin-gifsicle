@@ -1,26 +1,66 @@
 name: test
+
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  test:
-    name: Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+  linux:
+    runs-on: ubuntu-latest
+
     strategy:
-      fail-fast: false
       matrix:
-        node-version:
-          - 12
-          - 14
-          - 16
-        os:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
+        node-version: [16.x, 18.x, 20.x]
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm test
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm test
+      env:
+        CI: true
+
+  macos:
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install Prerequisites
+      run: brew install autoconf automake libtool
+    - run: npm install
+    - run: npm test
+      env:
+        CI: true
+
+  windows:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm test
+      env:
+        CI: true
